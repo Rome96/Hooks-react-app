@@ -6,20 +6,28 @@ const SimpleForm = () => {
   const [formState, setFormState] = useState({
     name: '',
     email: ''
-  })
+  });
 
-  const { name, email } = formState
+  const { name, email } = formState;
 
   useEffect(() => {
-    
-  }, [])
+    console.log('Hey!')
+  }, []);
+
+  useEffect(() => {
+    console.log('fromState cambió!');
+  }, [formState]);
+
+  useEffect(() => {
+    console.log("email cambió!");
+  }, [email]);
 
   const handleInputChange = ({ target }) => {
     setFormState({
       ...formState,
       [target.name]: target.value
-    })
-  }
+    });
+  };
 
   return (
     <>
@@ -47,6 +55,6 @@ const SimpleForm = () => {
       </div>
     </>
   );
-}
+};
 
-export default SimpleForm
+export default SimpleForm;
