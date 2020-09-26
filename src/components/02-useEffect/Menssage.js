@@ -3,9 +3,15 @@ import React, {useEffect} from 'react'
 const Menssage = () => {
 
   useEffect(() => {
-    console.log('Se montó el componente')
+     
+    const mouseMove = e => {
+      console.log(':D')
+    }
+    
+    window.addEventListener('mousemove', mouseMove)
+
     return () => {
-      console.log('Se desmontó el componente')
+      window.removeEventListener('mousemove', mouseMove)
     }
   }, [])
 
