@@ -9,7 +9,7 @@ const MultipleCustomsHooks = () => {
 
   return (
     <>
-      <h3>Multiple Custom Hooks</h3>
+      <h3>BreakingBad Quotes</h3>
       <hr />
       {loading ? (
         <div className="aler alert-info text-center">
