@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 // import AppHook from './AppHook';
 // import CounterApp from './components/01-useState/CounterApp';
 // import SimpleForm from './components/02-useEffect/SimpleForm';
-import FormWithCustomHook from './components/02-useEffect/FormWithCustomHook';
+// import FormWithCustomHook from './components/02-useEffect/FormWithCustomHook';
 // import CounterWithCustomHook from './components/01-useState/CounterWithCustomHook';
+import MultipleCustomsHooks from './components/02-useEffect/03-example/MultipleCustomsHooks';
 
-ReactDOM.render(<FormWithCustomHook />, document.getElementById("root"));
+ReactDOM.render(<MultipleCustomsHooks/>, document.getElementById("root"));
 
