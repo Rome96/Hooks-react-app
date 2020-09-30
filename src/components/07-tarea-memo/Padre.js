@@ -1,15 +1,18 @@
-import React from 'react';
-import './padre.css'
+import React, { useState, useCallback } from 'react';
+import './padre.css';
 import { Hijo } from './Hijo';
-import { useState } from 'react';
 
 const Padre = () => {
   const numeros = [2, 4, 6, 8, 10];
   const [valor, setValor] = useState(0);
 
-  const incrementar = (num) => {
-    setValor(valor + num);
-  };
+  // const incrementar = (num) => {
+  //   setValor(valor + num);
+  // };
+
+  const incrementar = useCallback((num) => {
+    setValor(v => v + num);
+  }, [setValor]);
 
   return (
     <div>
@@ -18,10 +21,9 @@ const Padre = () => {
 
       <hr />
 
-      {numeros.map((n) => (
-        <Hijo key={n} numero={n} incrementar={incrementar} />
+      {numeros.map((n, i) => (
+        <Hijo key={i} numero={n} incrementar={incrementar} />
       ))}
-      {/* <Hijo /> */}
     </div>
   );
 };
