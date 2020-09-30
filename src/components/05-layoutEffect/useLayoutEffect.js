@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import "./layout.css";
-import { useFetch, useCounter } from "../hooks";
+import { useFetch, useCounter } from "../../hooks";
 
 const LayoutEffect = () => {
   const [boxSize, setBoxSize] = useState({})

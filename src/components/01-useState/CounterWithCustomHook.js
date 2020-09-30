@@ -1,6 +1,6 @@
 import React from 'react';
 import "./counter.css";
-import { useCounter } from '../hooks/useCounter';
+import { useCounter } from '../../hooks';
 
 const CounterWithCustomHook = () => {
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import './example.css'
-import { useFetch, useCounter } from '../hooks';
+import { useFetch, useCounter } from '../../hooks';
 
 const MultipleCustomsHooks = () => {
   const { counter, increment } = useCounter(1);
