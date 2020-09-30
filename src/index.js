@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import AppHook from './AppHook';
 // import Memorize from './components/06-memos/Memorize';
-import MemoHook from './components/06-memos/MemoHook';
+// import MemoHook from './components/06-memos/MemoHook';
 // import FocuScreen from './components/04-useRef/FocuScreen';
+import CallbackHook from './components/06-memos/CallbackHook';
 // import CounterApp from './components/01-useState/CounterApp';
 // import SimpleForm from './components/02-useEffect/SimpleForm';
 // import LayoutEffect from './components/05-layoutEffect/useLayoutEffect';
@@ -12,5 +13,5 @@ import MemoHook from './components/06-memos/MemoHook';
 // import MultipleCustomsHooks from './components/03-example/MultipleCustomsHooks';
 // import CounterWithCustomHook from './components/01-useState/CounterWithCustomHook';
 
-ReactDOM.render(<MemoHook />, document.getElementById("root"));
+ReactDOM.render(<CallbackHook />, document.getElementById("root"));
 
