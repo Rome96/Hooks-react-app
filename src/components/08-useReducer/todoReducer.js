@@ -1,6 +1,8 @@
-const { act } = require("react-dom/test-utils");
-
-const todoReducer = (state = [], action) => {
-
-  return state
+export const todoReducer = (state = [], action) => {
+  switch (action?.type) {
+    case 'add':
+      return {}  
+    default:
+      return state
+  }
 }
