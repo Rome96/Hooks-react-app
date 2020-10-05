@@ -17,9 +17,26 @@ const initialState = [
 
 const TodoApp = () => {
 
-  const [todos] = useReducer(todoReducer, initialState);
+  const [todos, dispatch] = useReducer(todoReducer, initialState);
 
-  console.log(todos)
+  const handleSubmit = e => {
+    e.preventDefault()
+
+    const newTodo = {
+      id: 3,
+      desc: "Learning Unit test",
+      done: false,
+    };
+
+    const action = {
+      type: 'add',
+      payload: newTodo
+    }
+
+    dispatch(action)
+  }
+
+  console.log({ todos });
 
   return (
     <div>
@@ -43,7 +60,7 @@ const TodoApp = () => {
         <div className="col-5">
           <h4>Add TODO</h4>
           <hr/>
-          <form>
+          <form onSubmit={handleSubmit}>
               <input
                 type="text"
                 name="description"
@@ -51,7 +68,10 @@ const TodoApp = () => {
                 placeholder="Learning..."
                 className="form-control"
               />
-              <button className="btn btn-outline-primary mt-2 btn-block">
+              <button
+                type="submit"
+                className="btn btn-outline-primary mt-2 btn-block"
+              >
                 Add
               </button>
           </form>
