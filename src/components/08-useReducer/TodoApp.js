@@ -1,16 +1,12 @@
 import React, { useReducer } from 'react';
 import { todoReducer } from './todoReducer';
+import { useForm } from '../../hooks/useForm';
 import './styles.css';
 
 const initialState = [
   {
-  id: 1,
+  id: new Date().getTime(),
   desc: 'Learning react',
-  done: false
- },
- {
-  id: 2,
-  desc: 'Learning Hooks',
   done: false
  }
 ]
@@ -19,12 +15,18 @@ const TodoApp = () => {
 
   const [todos, dispatch] = useReducer(todoReducer, initialState);
 
+  const [{ description }, handleInputChange, reset] = useForm({
+    description: "",
+  });
+
   const handleSubmit = e => {
-    e.preventDefault()
+    e.preventDefault();
+
+    if (description.trim().length <= 0) return;
 
     const newTodo = {
-      id: 3,
-      desc: "Learning Unit test",
+      id: new Date().getTime(),
+      desc: description,
       done: false,
     };
 
@@ -34,9 +36,11 @@ const TodoApp = () => {
     }
 
     dispatch(action)
+
+    reset()
   }
 
-  console.log({ todos });
+  console.log(description);
 
   return (
     <div>
@@ -61,19 +65,21 @@ const TodoApp = () => {
           <h4>Add TODO</h4>
           <hr/>
           <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                name="description"
-                autoComplete="off"
-                placeholder="Learning..."
-                className="form-control"
-              />
-              <button
-                type="submit"
-                className="btn btn-outline-primary mt-2 btn-block"
-              >
-                Add
-              </button>
+            <input
+              type="text"
+              name="description"
+              autoComplete="off"
+              value={description}
+              placeholder="Learning..."
+              className="form-control"
+              onChange={handleInputChange}
+            />
+            <button
+              type="submit"
+              className="btn btn-outline-primary mt-2 btn-block"
+            >
+              Add
+            </button>
           </form>
         </div>
       </div>
