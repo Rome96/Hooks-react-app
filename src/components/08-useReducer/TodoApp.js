@@ -18,11 +18,20 @@ const init = () => { // computar estado inicial
 const TodoApp = () => {
 
   const [todos, dispatch] = useReducer(todoReducer, [], init);
-  const [{ description }, handleInputChange, reset] = useForm({ vdescription: "" });
+  const [{ description }, handleInputChange, reset] = useForm({ description: "" });
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
+
+  const handleDelete = id => {
+    const action = {
+      type: 'delete',
+      payload: id
+    };
+
+    dispatch(action);
+  }
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -43,8 +52,6 @@ const TodoApp = () => {
     reset()
   };
 
-  console.log(description);
-
   return (
     <div>
       <h3>
@@ -54,19 +61,21 @@ const TodoApp = () => {
       <div className="row">
         <div className="col-7">
           <ul className="list-group list-group-flush">
-            {todos.map((todo, i) => (
-              <li key={todo.id} className="list-group-item">
+            {todos.map(({id, desc}, i) => (
+              <li key={id} className="list-group-item">
                 <p className="text-center">
-                  {i + 1}. {todo.desc}
+                  {i + 1}. {desc}
                 </p>
-                <button className="btn btn-danger">delete</button>
+                <button className="btn btn-danger" onClick={() => handleDelete(id)}>
+                  delete
+                </button>
               </li>
             ))}
           </ul>
         </div>
         <div className="col-5">
           <h4>Add TODO</h4>
-          <hr/>
+          <hr />
           <form onSubmit={handleSubmit}>
             <input
               type="text"
