@@ -5,9 +5,7 @@ import './styles.css';
 
 
 const init = () => { // computar estado inicial
-
   return JSON.parse(localStorage.getItem('todos')) || [] // si regresa null, retorna un [] vacio
-
   // return [{
   //   id: new Date().getTime(),
   //   desc: 'Learning react',
@@ -16,7 +14,6 @@ const init = () => { // computar estado inicial
 };
 
 const TodoApp = () => {
-
   const [todos, dispatch] = useReducer(todoReducer, [], init);
   const [{ description }, handleInputChange, reset] = useForm({ description: "" });
 
@@ -31,6 +28,13 @@ const TodoApp = () => {
     };
 
     dispatch(action);
+  }
+
+  const handleToggle = id => {
+    dispatch({
+      type: 'toggle',
+      payload: id,
+    })
   }
 
   const handleSubmit = e => {
@@ -61,9 +65,12 @@ const TodoApp = () => {
       <div className="row">
         <div className="col-7">
           <ul className="list-group list-group-flush">
-            {todos.map(({id, desc}, i) => (
+            {todos.map(({id, desc, done}, i) => (
               <li key={id} className="list-group-item">
-                <p className="text-center">
+                <p
+                  className={`${ done && 'complete' }`}
+                  onClick={() => handleToggle(id)}
+                >
                   {i + 1}. {desc}
                 </p>
                 <button className="btn btn-danger" onClick={() => handleDelete(id)}>
