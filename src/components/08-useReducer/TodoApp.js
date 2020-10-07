@@ -1,28 +1,31 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { todoReducer } from './todoReducer';
 import { useForm } from '../../hooks/useForm';
 import './styles.css';
 
 
-const init = () => {
-  return [{
-    id: new Date().getTime(),
-    desc: 'Learning react',
-    done: false
-  }];
+const init = () => { // computar estado inicial
+
+  return JSON.parse(localStorage.getItem('todos')) || [] // si regresa null, retorna un [] vacio
+
+  // return [{
+  //   id: new Date().getTime(),
+  //   desc: 'Learning react',
+  //   done: false
+  // }];
 };
 
 const TodoApp = () => {
 
   const [todos, dispatch] = useReducer(todoReducer, [], init);
+  const [{ description }, handleInputChange, reset] = useForm({ vdescription: "" });
 
-  const [{ description }, handleInputChange, reset] = useForm({
-    description: "",
-  });
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   const handleSubmit = e => {
     e.preventDefault();
-
     if (description.trim().length <= 0) return;
 
     const newTodo = {
@@ -34,12 +37,11 @@ const TodoApp = () => {
     const action = {
       type: 'add',
       payload: newTodo
-    }
+    };
 
     dispatch(action)
-
     reset()
-  }
+  };
 
   console.log(description);
 
