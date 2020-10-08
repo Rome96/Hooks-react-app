@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from 'react';
 import { todoReducer } from './todoReducer';
 import { useForm } from '../../hooks/useForm';
-import './styles.css';
+import TodoList from './TodoList';
 
 
 const init = () => { // computar estado inicial
@@ -64,21 +64,11 @@ const TodoApp = () => {
       <hr />
       <div className="row">
         <div className="col-7">
-          <ul className="list-group list-group-flush">
-            {todos.map(({id, desc, done}, i) => (
-              <li key={id} className="list-group-item">
-                <p
-                  className={`${ done && 'complete' }`}
-                  onClick={() => handleToggle(id)}
-                >
-                  {i + 1}. {desc}
-                </p>
-                <button className="btn btn-danger" onClick={() => handleDelete(id)}>
-                  delete
-                </button>
-              </li>
-            ))}
-          </ul>
+          <TodoList
+            todos={todos}
+            handleDelete={handleDelete}
+            handleToggle={handleToggle}
+          />
         </div>
         <div className="col-5">
           <h4>Add TODO</h4>
