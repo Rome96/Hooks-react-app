@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from 'react';
 import { todoReducer } from './todoReducer';
-import { useForm } from '../../hooks/useForm';
 import TodoList from './TodoList';
+import  TodoAdd  from './TodoAdd';
 
 
 const init = () => { // computar estado inicial
@@ -15,7 +15,6 @@ const init = () => { // computar estado inicial
 
 const TodoApp = () => {
   const [todos, dispatch] = useReducer(todoReducer, [], init);
-  const [{ description }, handleInputChange, reset] = useForm({ description: "" });
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
@@ -37,24 +36,12 @@ const TodoApp = () => {
     })
   }
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (description.trim().length <= 0) return;
-
-    const newTodo = {
-      id: new Date().getTime(),
-      desc: description,
-      done: false,
-    };
-
-    const action = {
-      type: 'add',
-      payload: newTodo
-    };
-
-    dispatch(action)
-    reset()
-  };
+  const handleAdd = newTodo => {
+    dispatch({
+      type: "add",
+      payload: newTodo,
+    });
+  }
 
   return (
     <div>
@@ -63,33 +50,15 @@ const TodoApp = () => {
       </h3>
       <hr />
       <div className="row">
-        <div className="col-7">
+        <div className="col-md-7 col-sm-12">
           <TodoList
             todos={todos}
             handleDelete={handleDelete}
             handleToggle={handleToggle}
           />
         </div>
-        <div className="col-5">
-          <h4>Add TODO</h4>
-          <hr />
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="description"
-              autoComplete="off"
-              value={description}
-              placeholder="Learning..."
-              className="form-control"
-              onChange={handleInputChange}
-            />
-            <button
-              type="submit"
-              className="btn btn-outline-primary mt-2 btn-block"
-            >
-              Add
-            </button>
-          </form>
+        <div className="col-md-5 col-sm-12">
+          <TodoAdd handleAdd={handleAdd} />
         </div>
       </div>
     </div>
