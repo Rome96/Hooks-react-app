@@ -5,17 +5,23 @@ import TodoListItem from './TodoListItem';
 const TodoList = props => {
   const {todos, handleDelete, handleToggle} = props;
 
-  return <ul className="list-group list-group-flush">
-    {todos.map((todo, i) => (
-      <TodoListItem
-        i={i}
-        {...todo}
-        key={todo.id}
-        handleDelete={handleDelete}
-        handleToggle={handleToggle}
-      />
-    ))}
-  </ul>
+  return (
+    <>
+      <h4>List TODO</h4>
+      <hr />
+      <ul className="list-group list-group-flush">
+        {todos.map((todo, i) => (
+          <TodoListItem
+            i={i}
+            {...todo}
+            key={todo.id}
+            handleDelete={handleDelete}
+            handleToggle={handleToggle}
+          />
+        ))}
+      </ul>
+    </>
+  );
 };
 
 TodoList.propTypes = {

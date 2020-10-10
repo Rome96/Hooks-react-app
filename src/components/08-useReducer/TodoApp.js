@@ -50,15 +50,15 @@ const TodoApp = () => {
       </h3>
       <hr />
       <div className="row">
+        <div className="col-md-5 col-sm-12">
+          <TodoAdd handleAdd={handleAdd} />
+        </div>
         <div className="col-md-7 col-sm-12">
           <TodoList
             todos={todos}
             handleDelete={handleDelete}
             handleToggle={handleToggle}
           />
-        </div>
-        <div className="col-md-5 col-sm-12">
-          <TodoAdd handleAdd={handleAdd} />
         </div>
       </div>
     </div>

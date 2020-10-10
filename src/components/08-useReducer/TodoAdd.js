@@ -22,8 +22,6 @@ const TodoAdd = ({ handleAdd }) => {
 
   return (
     <>
-      <h4>Add TODO</h4>
-      <hr />
       <form onSubmit={handleSubmit}>
         <input
           type='text'
@@ -36,7 +34,7 @@ const TodoAdd = ({ handleAdd }) => {
         />
         <button
           type='submit'
-          className='btn btn-outline-primary mt-2 btn-block'
+          className='btn btn-outline-primary mt-2 mb-5 btn-block'
         >
           Add
         </button>
