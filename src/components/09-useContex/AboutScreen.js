@@ -1,12 +1,12 @@
 import React from 'react';
 
-const HomeScreen = () => {
+const AboutScreen = () => {
   return (
     <div>
       <h1>Home Screen</h1>
-      <hr/>
+      <hr />
     </div>
   );
 };
 
-export default HomeScreen;
+export default AboutScreen;
