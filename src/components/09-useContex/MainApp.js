@@ -1,12 +1,8 @@
 import React from 'react';
+import { AppRoute } from './AppRoute';
 
 const MainApp = () => {
-  return (
-    <div>
-      <h1>Main Screen</h1>
-      <hr />
-    </div>
-  );
+  return <AppRoute />
 };
 
 export default MainApp;

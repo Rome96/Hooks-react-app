@@ -3,7 +3,7 @@ import React from 'react';
 const AboutScreen = () => {
   return (
     <div>
-      <h1>Home Screen</h1>
+      <h1>About Screen</h1>
       <hr />
     </div>
   );
