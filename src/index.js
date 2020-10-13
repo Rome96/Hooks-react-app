@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import AppHook from './AppHook';
-import MainApp from './components/09-useContex/MainApp';
+import MainApp from './components/09-useContext/MainApp';
 // import Padre from './components/07-tarea-memo/Padre';
 // import Memorize from './components/06-memos/Memorize';
 // import MemoHook from './components/06-memos/MemoHook';
