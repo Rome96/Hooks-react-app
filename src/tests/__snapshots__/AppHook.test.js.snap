@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing component <AppHook/>  return component <AppHook/> Snapshot 1`] = `
+<div>
+  <h3>
+    Hola gente
+  </h3>
+</div>
+`;
