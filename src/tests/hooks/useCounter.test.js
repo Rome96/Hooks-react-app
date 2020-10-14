@@ -3,6 +3,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useCounter } from '../../hooks/useCounter'
 
 describe('testing hook useCounter', () => {
+
   test('return default values ', () => {
     const { result } = renderHook(() => useCounter());
     const counter = result.current.counter;
@@ -16,4 +17,10 @@ describe('testing hook useCounter', () => {
     expect(typeof reset).toBe('function')
   });
   
+  test('return counter in 10', () => {
+    const { result } = renderHook(() => useCounter(10));
+    const counter = result.current.counter
+    
+    expect(counter).toBe(10)
+  })
 });
